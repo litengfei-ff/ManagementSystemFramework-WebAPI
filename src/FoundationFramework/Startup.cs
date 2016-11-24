@@ -14,7 +14,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 
 namespace FoundationFramework
-{  
+{    
     public partial class Startup
     {
         IConfigurationRoot Configuration;
