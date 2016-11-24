@@ -1,0 +1,45 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+
+using FoundationFramework.Models.DomainModel;
+
+namespace FoundationFramework.Interfaces
+{
+	/// <summary>
+	/// 使用模板自动生成
+    /// 所有实体 继承基类 定义CRUD接口  
+    /// </summary>
+<# 
+// 实体类所在绝对路径
+string eneityPath=@"F:\ff-new\FoundationFramework\src\FoundationFramework\Models\DomainModel";
+// 不需要生成的实体数组
+string [] exceptEntityName={"BaseEntity","AccessToken"};
+// 获取实体路径下的所有文件名 
+string [] eneityNames=Directory.GetFiles(eneityPath);  
+
+foreach(var filename in eneityNames)
+{
+	var temp=filename.LastIndexOf('\\')+1;
+	var entityName= filename.Substring(temp,filename.LastIndexOf('.')-temp);
+	
+	bool isExcept=false;
+	foreach(var exceptName in exceptEntityName)
+	{
+		if(entityName==exceptName){isExcept=true;break;}
+	}
+	 
+	if(!isExcept){
+#> 
+ public partial interface I<#=entityName#>Logic : IBaseLogic<<#=entityName#>> { }
+
+<# 
+	}
+}
+#>
+}
+ 
