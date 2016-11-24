@@ -7,6 +7,7 @@ namespace FoundationFramework.Controllers
 {
     public class HomeController : Controller
     {
+        添加错误代码
         public IActionResult Index()
         {
             return Content("Welcome to visit!   FF. All rights reserved... ");
