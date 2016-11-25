@@ -32,6 +32,7 @@ namespace FoundationFramework.Interfaces
         /// <param name="ascOrder">是否升序排列 </param>
         /// <returns></returns>
         T GetFirst<S>(Expression<Func<T, bool>> wherelambda, Expression<Func<T, S>> orderlambda, bool ascOrder = true);
+        T GetFirst(Expression<Func<T, bool>> wherelambda);
 
         /// <summary>
         /// 获取满足条件的所有内容
@@ -42,6 +43,7 @@ namespace FoundationFramework.Interfaces
         /// <param name="ascOrder">是否升序排列</param>
         /// <returns></returns>
         IQueryable<T> GetAll<S>(Expression<Func<T, bool>> whereLambda, Expression<Func<T, S>> orderLambda, bool ascOrder = true);
+        IQueryable<T> GetAll(Expression<Func<T, bool>> whereLambda);
 
         /// <summary>
         /// 获取满足条件的分页内容

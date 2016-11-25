@@ -64,6 +64,11 @@ namespace FoundationFramework.Implements
             return GetAll<S>(wherelambda, orderlambda, ascOrder).FirstOrDefault();
         }
 
+        public T GetFirst(Expression<Func<T, bool>> wherelambda)
+        {
+            return GetAll(wherelambda).FirstOrDefault();
+        }
+
         public IQueryable<T> GetAll<S>(Expression<Func<T, bool>> whereLambda, Expression<Func<T, S>> orderLambda, bool ascOrder = true)
         {
             if (ascOrder)
@@ -71,6 +76,11 @@ namespace FoundationFramework.Implements
                 return context.Set<T>().Where(whereLambda).OrderBy(orderLambda);
             }
             return context.Set<T>().Where(whereLambda).OrderByDescending(orderLambda);
+        }
+
+        public IQueryable<T> GetAll(Expression<Func<T, bool>> whereLambda)
+        {
+            return context.Set<T>().Where(whereLambda);
         }
 
         /// <summary>

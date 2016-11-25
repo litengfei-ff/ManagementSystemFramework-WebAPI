@@ -4,15 +4,25 @@ using FoundationFramework.Models.Enums;
 using FoundationFramework.Models.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
- 
+
 
 namespace FoundationFramework.Controllers
 {
-	[Route("api/[controller]")]
+    [Route("api/[controller]")]
     public class UserController : FFController
     {
         public UserController(ILogLogic iLogLogic, IUserInfoLogic iuserLogic, IDepartmentLogic ideptLogic) : base(iLogLogic, iuserLogic, ideptLogic)
         {
+        }
+
+        [HttpGet("getDetail")]
+        public Ret<UserDetailInfo> GetUserDetail()
+        {
+            return new Ret<UserDetailInfo>
+            {
+                ReCode = ReCodeEnum.Success,
+                Data = userLogic.GetDetailInfo(userId)
+            };
         }
 
         [HttpGet("{id}")]
