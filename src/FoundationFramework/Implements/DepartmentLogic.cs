@@ -30,7 +30,7 @@ namespace FoundationFramework.Implements
             var newDeptList = new List<Dept>();
             foreach (var dept in deptList)
             {
-                if (dept.ParentId == 0)
+                if (dept.Id == 1)
                 {
                     newDeptList.Add(dept);
                     continue;

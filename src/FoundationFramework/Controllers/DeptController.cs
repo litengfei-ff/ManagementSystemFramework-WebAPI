@@ -39,17 +39,20 @@ namespace FoundationFramework.Controllers
         /// <summary>
         /// 新增
         /// </summary>
-        [HttpPost]
-        public Ret Add(int deptId, string deptName)
+        [HttpPost("add")]
+        public Ret Add([FromBody]Department dep)
         {
+            var deptName = dep.DepartmentName;
+            var deptId = dep.Id;
+
             // 验证部门名是否存在
-            if (deptLogic.GetFirst(p => p.DepartmentName == deptName && p.DelFlag == (int)DelFlagEnum.Normal, p => p.Id) != null)
+            if (deptLogic.GetFirst(p => p.DepartmentName == deptName && p.DelFlag == (int)DelFlagEnum.Normal) != null)
             {
                 return new Ret() { ReCode = ReCodeEnum.Fail, Msg = "添加失败，部门名称已存在" };
             }
 
             // 获取上级部门信息
-            var partentDept = deptLogic.GetFirst(p => p.Id == deptId, p => p.Id);
+            var partentDept = deptLogic.GetFirst(p => p.Id == deptId && p.DelFlag == (int)DelFlagEnum.Normal);
             if (partentDept == null)
             {
                 return new Ret() { ReCode = ReCodeEnum.Fail, Msg = "添加失败，父级部门不存在" };
@@ -63,24 +66,27 @@ namespace FoundationFramework.Controllers
             });
             deptLogic.SaveChanges();
 
-            return new Ret() { ReCode = ReCodeEnum.Fail, Msg = "添加成功" };
+            return new Ret() { ReCode = ReCodeEnum.Success, Msg = "添加成功" };
         }
 
 
         /// <summary>
         /// 重命名
         /// </summary>
-        [HttpPost]
-        public Ret Edit(int deptId, string deptName)
+        [HttpPut("edit")]
+        public Ret Edit([FromBody]Department dep)
         {
+            var deptName = dep.DepartmentName;
+            var deptId = dep.Id;
+
             // 验证部门名是否存在
-            if (deptLogic.GetFirst(p => p.DepartmentName == deptName && p.DelFlag == (int)DelFlagEnum.Normal, p => p.Id) != null)
+            if (deptLogic.GetFirst(p => p.DepartmentName == deptName && p.DelFlag == (int)DelFlagEnum.Normal) != null)
             {
                 return new Ret() { ReCode = ReCodeEnum.Fail, Msg = "重命名失败，部门名称已存在" };
             }
 
             // 获取对应的部门
-            var deptInfo = deptLogic.GetFirst(p => p.Id == deptId, p => p.Id);
+            var deptInfo = deptLogic.GetFirst(p => p.Id == deptId && p.DelFlag == (int)DelFlagEnum.Normal);
             if (deptInfo == null)
             {
                 return new Ret() { ReCode = ReCodeEnum.Fail, Msg = "重命名失败，部门不存在" };
@@ -94,17 +100,21 @@ namespace FoundationFramework.Controllers
         /// <summary>
         /// 删除 
         /// </summary>
-        [HttpPost]
+        [HttpDelete("del/{deptId}")]
         public Ret Delete(int deptId)
         {
-            var deptInfo = deptLogic.GetFirst(p => p.Id == deptId, p => p.Id);
+            var deptInfo = deptLogic.GetFirst(p => p.Id == deptId && p.DelFlag == (int)DelFlagEnum.Normal);
             if (deptInfo == null)
             {
                 return new Ret() { ReCode = ReCodeEnum.Fail, Msg = "删除失败，部门不存在" };
             }
+            if (deptInfo.Id == 1)
+            {
+                return new Ret() { ReCode = ReCodeEnum.Fail, Msg = "删除失败，根部门无法删除" };
+            }
 
             // 是否有子部门
-            if (deptLogic.GetFirst(p => p.ParentId == deptId, p => p.Id) != null)
+            if (deptLogic.GetFirst(p => p.ParentId == deptId && p.DelFlag == (int)DelFlagEnum.Normal) != null)
             {
                 return new Ret() { ReCode = ReCodeEnum.Fail, Msg = "删除失败，该部门拥有子部门" };
             }
