@@ -14,7 +14,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 
 namespace FoundationFramework
-{    
+{
     public partial class Startup
     {
         IConfigurationRoot Configuration;
@@ -52,7 +52,7 @@ namespace FoundationFramework
             services.AddScoped<ILogLogic, LogLogic>();
 
             services.AddMvc();
-           
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -68,6 +68,8 @@ namespace FoundationFramework
             ConfigureJwtAuth(app);
 
             app.UseMvcWithDefaultRoute();
+
+            ApplicationDbContext.SetSeed(app.ApplicationServices, Configuration);
 
         }
 

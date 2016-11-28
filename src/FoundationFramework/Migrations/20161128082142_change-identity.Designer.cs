@@ -8,8 +8,8 @@ using FoundationFramework.Models;
 namespace FoundationFramework.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160909063631_fk")]
-    partial class fk
+    [Migration("20161128082142_change-identity")]
+    partial class changeidentity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -19,8 +19,7 @@ namespace FoundationFramework.Migrations
 
             modelBuilder.Entity("FoundationFramework.Models.DomainModel.Department", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("Id");
 
                     b.Property<int>("DelFlag");
 
@@ -37,8 +36,7 @@ namespace FoundationFramework.Migrations
 
             modelBuilder.Entity("FoundationFramework.Models.DomainModel.Log", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("Id");
 
                     b.Property<DateTime>("CreateTime");
 
@@ -63,8 +61,7 @@ namespace FoundationFramework.Migrations
 
             modelBuilder.Entity("FoundationFramework.Models.DomainModel.UserInfo", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("Id");
 
                     b.Property<int>("DelFlag");
 

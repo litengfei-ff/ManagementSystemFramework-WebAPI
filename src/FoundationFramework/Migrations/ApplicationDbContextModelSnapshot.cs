@@ -18,8 +18,7 @@ namespace FoundationFramework.Migrations
 
             modelBuilder.Entity("FoundationFramework.Models.DomainModel.Department", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("Id");
 
                     b.Property<int>("DelFlag");
 
@@ -36,8 +35,7 @@ namespace FoundationFramework.Migrations
 
             modelBuilder.Entity("FoundationFramework.Models.DomainModel.Log", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("Id");
 
                     b.Property<DateTime>("CreateTime");
 
@@ -62,8 +60,7 @@ namespace FoundationFramework.Migrations
 
             modelBuilder.Entity("FoundationFramework.Models.DomainModel.UserInfo", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("Id");
 
                     b.Property<int>("DelFlag");
 

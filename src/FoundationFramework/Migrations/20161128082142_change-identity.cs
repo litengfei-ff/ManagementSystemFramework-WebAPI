@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace FoundationFramework.Migrations
 {
-    public partial class init : Migration
+    public partial class changeidentity : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,8 +12,7 @@ namespace FoundationFramework.Migrations
                 name: "Department",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<int>(nullable: false),
                     DelFlag = table.Column<int>(nullable: false),
                     DepartmentName = table.Column<string>(nullable: true),
                     Level = table.Column<int>(nullable: false),
@@ -29,8 +27,7 @@ namespace FoundationFramework.Migrations
                 name: "UserInfo",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<int>(nullable: false),
                     DelFlag = table.Column<int>(nullable: false),
                     JobNumber = table.Column<string>(nullable: false),
                     Name = table.Column<string>(nullable: true),
@@ -52,8 +49,7 @@ namespace FoundationFramework.Migrations
                 name: "Log",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<int>(nullable: false),
                     CreateTime = table.Column<DateTime>(nullable: false),
                     DelFlag = table.Column<int>(nullable: false),
                     LogLevel = table.Column<string>(nullable: true),

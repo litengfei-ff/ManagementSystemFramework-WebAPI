@@ -30,8 +30,8 @@ namespace FoundationFramework.Implements
         /// <returns></returns>
         public T Add(T u)
         {
-            //int newId = context.Set<T>().Max(p => p.Id) + 1;
-            //u.Id = newId;
+            int newId = context.Set<T>().Max(p => p.Id) + 1;
+            u.Id = newId;
             context.Add<T>(u);
             return u;
         }
