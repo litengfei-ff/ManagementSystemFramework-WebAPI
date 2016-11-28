@@ -10,7 +10,7 @@ using Microsoft.Extensions.Configuration;
 namespace FoundationFramework.Controllers
 {
     /// <summary>
-    /// 控制器基类  提供访问配置文件，写日志，根据Token获取用户信息等方法
+    /// 控制器基类  提供访问配置文件，写日志，根据Token获取用户信息等方法 好使吗
     /// </summary>
     [Authorize]
     [TypeFilter(typeof(ExceptionFilter))]
