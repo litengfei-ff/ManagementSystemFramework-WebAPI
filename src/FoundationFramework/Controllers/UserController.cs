@@ -9,7 +9,7 @@ namespace LTF.Controllers
     [Route("api/[controller]")]
     public class UserController : MasterController
     {
-        public UserController(IUserLogic iuserLogic) : base(iuserLogic)
+        public UserController(IUserLogic iuserLogic, ILogLogic logLogic) : base(iuserLogic, logLogic)
         {
         }
 
@@ -19,7 +19,7 @@ namespace LTF.Controllers
             return new Ret<UserDetailInfo>
             {
                 ReCode = ReCodeEnum.Success,
-                Data = userLogic.GetDetailInfo(userId)
+                Data = userLogic.GetDetailInfo(userInfo.Id)
             };
         }
 

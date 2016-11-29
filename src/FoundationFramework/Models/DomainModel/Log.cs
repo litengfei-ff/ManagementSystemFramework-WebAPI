@@ -6,7 +6,7 @@ namespace LTF.Models.DomainModel
 
     public partial class Log : BaseEntity
     {
-        public int NavUserId { get; set; }
+        public int? NavUserId { get; set; }
 
         public User NavUser { get; set; }
 

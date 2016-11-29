@@ -14,7 +14,7 @@ namespace LTF.Controllers
     [Route("api/[controller]")]
     public class GetTokenController : MasterController
     {
-        public GetTokenController(IUserLogic iuserLogic) : base(iuserLogic)
+        public GetTokenController( IUserLogic iuserLogic, ILogLogic logLogic) : base(iuserLogic, logLogic)
         {
         }
 

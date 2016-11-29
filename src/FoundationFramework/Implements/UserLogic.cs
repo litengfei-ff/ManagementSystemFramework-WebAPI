@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using LTF.Models.DomainModel;
 using LTF.Models.Enums;
 using LTF.Models.ViewModel;
 
@@ -35,11 +36,10 @@ namespace LTF.Implements
             return GetFirst(p => p.DelFlag == (int)DelFlagEnum.Normal && p.JobNumber == jobNumber && p.Pwd == pwd, p => p.Id) != null;
         }
 
-        public int? GetUserIdByJobNumber(string jobNumber)
+        public User GetUserByJobNumber(string jobNumber)
         {
             return GetFirst(
-                p => p.DelFlag == (int)DelFlagEnum.Normal && p.JobNumber == jobNumber,
-                p => p.Id)?.Id;
+                p => p.DelFlag == (int)DelFlagEnum.Normal && p.JobNumber == jobNumber);
         }
     }
 }

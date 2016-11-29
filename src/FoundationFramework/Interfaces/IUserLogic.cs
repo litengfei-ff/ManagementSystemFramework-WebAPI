@@ -1,4 +1,5 @@
-﻿using LTF.Models.ViewModel;
+﻿using LTF.Models.DomainModel;
+using LTF.Models.ViewModel;
 
 namespace LTF.Interfaces
 {
@@ -8,7 +9,7 @@ namespace LTF.Interfaces
 
         bool IsExists(string jobNumber, string pwd);
 
-        int? GetUserIdByJobNumber(string jobNumber);
+        User GetUserByJobNumber(string jobNumber);
 
     }
 }

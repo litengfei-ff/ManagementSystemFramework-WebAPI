@@ -14,7 +14,7 @@ namespace LTF.Controllers
     public class RoleController : MasterController
     {
         public IRoleLogic roleLogic { get; set; }
-        public RoleController(IUserLogic iuserLogic, IRoleLogic roleLogic) : base(iuserLogic)
+        public RoleController(IRoleLogic roleLogic, IUserLogic iuserLogic, ILogLogic logLogic) : base(iuserLogic, logLogic)
         {
             this.roleLogic = roleLogic;
         }
@@ -54,6 +54,7 @@ namespace LTF.Controllers
             });
             roleLogic.SaveChanges();
 
+            logLogic.Info($"添加角色 id:[{roleInfo.Id}],name:[{roleInfo.Name}]", userInfo.Id, HttpContext.Request.Path);
             return new Ret() { ReCode = ReCodeEnum.Success, Msg = "添加成功" };
         }
 
@@ -82,6 +83,8 @@ namespace LTF.Controllers
             roleInfo.Name = name;
             roleLogic.SaveChanges();
 
+            logLogic.Info($"重命名角色 id:[{roleInfo.Id}],name:[{roleInfo.Name}]", userInfo.Id, HttpContext.Request.Path);
+
             return new Ret() { ReCode = ReCodeEnum.Success, Msg = "重命名成功" };
         }
 
@@ -104,6 +107,9 @@ namespace LTF.Controllers
             }
 
             roleLogic.SaveChanges();
+
+            logLogic.Info($"删除角色 id:[{roleIdStr}]", userInfo.Id, HttpContext.Request.Path);
+
             return new Ret() { ReCode = ReCodeEnum.Success, Msg = "删除成功" };
         }
 

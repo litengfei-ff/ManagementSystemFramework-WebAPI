@@ -10,7 +10,7 @@ namespace LTF.Interfaces
 
         void Warn(string msg, int userId, string requestUrl);
 
-        void Error(Exception exception, int userId, string requestUrl);
+        void Error(Exception exception, int? userId, string requestUrl);
 
     }
 }

@@ -2,6 +2,7 @@
 using System.IO;
 using LTF.Filter;
 using LTF.Interfaces;
+using LTF.Models.DomainModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -17,18 +18,21 @@ namespace LTF.Controllers
     {
         protected IConfigurationRoot Configuration;
 
-        protected IUserLogic userLogic { get; } 
+        protected IUserLogic userLogic { get; }
+
+        protected ILogLogic logLogic { get; }
 
         protected string userJobNumber => GetJobNumberFromToken();
 
-        protected int userId => userLogic.GetUserIdByJobNumber(userJobNumber) ?? Convert.ToInt32(Configuration["Log:AnonymousUserId"]);
+        protected User userInfo => userLogic.GetUserByJobNumber(userJobNumber);
 
         /// <summary>
         /// 注入用户逻辑处理方法
         /// </summary>
-        public MasterController(IUserLogic iuserLogic)
+        public MasterController(IUserLogic iuserLogic, ILogLogic logLogic)
         {
             userLogic = iuserLogic;
+            this.logLogic = logLogic;
 
             var builder = new ConfigurationBuilder();
             builder.SetBasePath(Directory.GetCurrentDirectory());

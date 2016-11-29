@@ -9,18 +9,11 @@ namespace LTF.Filter
 {
     public class ExceptionFilter : IExceptionFilter
     {
-        private IConfigurationRoot Configuration;
         private ILogLogic logLogic { get; }
-        private int userId => Convert.ToInt32(Configuration["Log:AnonymousUserId"]);
 
         public ExceptionFilter(ILogLogic iLogLogic)
         {
             logLogic = iLogLogic;
-
-            var builder = new ConfigurationBuilder();
-            builder.SetBasePath(Directory.GetCurrentDirectory());
-            builder.AddJsonFile("appsettings.json");
-            Configuration = builder.Build();
         }
 
         /// <summary>
@@ -36,8 +29,8 @@ namespace LTF.Filter
                 string httpMethod = context.HttpContext.Request.Method;
                 context.Result = new BadRequestResult();
 
-                logLogic.Error(context.Exception, userId, requestUrl);
-
+                logLogic.Error(context.Exception, null, requestUrl);
+                
                 context.ExceptionHandled = true;
             }
         }

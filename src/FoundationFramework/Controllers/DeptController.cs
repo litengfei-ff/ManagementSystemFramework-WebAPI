@@ -13,7 +13,7 @@ namespace LTF.Controllers
     {
         public IDepartmentLogic deptLogic { get; set; }
 
-        public DeptController(IDepartmentLogic deptLogic, IUserLogic iuserLogic) : base(iuserLogic)
+        public DeptController(IDepartmentLogic deptLogic, IUserLogic iuserLogic, ILogLogic logLogic) : base(iuserLogic, logLogic)
         {
             this.deptLogic = deptLogic;
         }
@@ -65,6 +65,7 @@ namespace LTF.Controllers
             });
             deptLogic.SaveChanges();
 
+            logLogic.Info($"添加部门 id:[{dept.Id}],name:[{dept.DepartmentName}]", userInfo.Id, HttpContext.Request.Path);
             return new Ret() { ReCode = ReCodeEnum.Success, Msg = "添加成功" };
         }
 
@@ -93,6 +94,7 @@ namespace LTF.Controllers
             deptInfo.DepartmentName = deptName;
             deptLogic.SaveChanges();
 
+            logLogic.Info($"重命名部门 id:[{deptInfo.Id}],name:[{deptInfo.DepartmentName}]", userInfo.Id, HttpContext.Request.Path);
             return new Ret() { ReCode = ReCodeEnum.Success, Msg = "重命名成功" };
         }
 
@@ -121,6 +123,7 @@ namespace LTF.Controllers
             deptLogic.DeleteByLogic(deptId);
             deptLogic.SaveChanges();
 
+            logLogic.Info($"删除部门 id:[{deptInfo.Id}],name:[{deptInfo.DepartmentName}]", userInfo.Id, HttpContext.Request.Path);
             return new Ret() { ReCode = ReCodeEnum.Success, Msg = "删除成功" };
         }
 

@@ -41,7 +41,7 @@ namespace LTF.Implements
             SaveChanges();
         }
 
-        public void Error(Exception excep, int userId, string requestUrl)
+        public void Error(Exception excep, int? userId, string requestUrl)
         {
             Add(new Models.DomainModel.Log
             {
