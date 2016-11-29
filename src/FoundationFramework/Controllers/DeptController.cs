@@ -11,10 +11,13 @@ namespace LTF.Controllers
     [Route("api/[controller]")]
     public class DeptController : MasterController
     {
+        public IDepartmentLogic deptLogic { get; set; }
 
-        public DeptController(ILogLogic iLogLogic, IUserLogic iuserLogic, IDepartmentLogic ideptLogic) : base(iLogLogic, iuserLogic, ideptLogic)
+        public DeptController(IDepartmentLogic deptLogic, IUserLogic iuserLogic) : base(iuserLogic)
         {
+            this.deptLogic = deptLogic;
         }
+
 
         /// <summary>
         /// 获取部门列表

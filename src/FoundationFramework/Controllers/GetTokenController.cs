@@ -14,8 +14,7 @@ namespace LTF.Controllers
     [Route("api/[controller]")]
     public class GetTokenController : MasterController
     {
-
-        public GetTokenController(ILogLogic iLogLogic, IUserLogic iuserLogic, IDepartmentLogic ideptLogic) : base(iLogLogic, iuserLogic, ideptLogic)
+        public GetTokenController(IUserLogic iuserLogic) : base(iuserLogic)
         {
         }
 
@@ -60,7 +59,6 @@ namespace LTF.Controllers
                 signingCredentials: options.SigningCredentials);
             var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
 
-            logLogic.Info("获取令牌", userId, Request.Path);
 
             return new Ret<Token>
             {
@@ -74,6 +72,7 @@ namespace LTF.Controllers
             };
 
         }
+
 
 
     }

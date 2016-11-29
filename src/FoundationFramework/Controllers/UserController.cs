@@ -9,7 +9,7 @@ namespace LTF.Controllers
     [Route("api/[controller]")]
     public class UserController : MasterController
     {
-        public UserController(ILogLogic iLogLogic, IUserLogic iuserLogic, IDepartmentLogic ideptLogic) : base(iLogLogic, iuserLogic, ideptLogic)
+        public UserController(IUserLogic iuserLogic) : base(iuserLogic)
         {
         }
 

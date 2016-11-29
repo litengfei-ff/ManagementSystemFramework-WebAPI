@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
 namespace LTF.Models.DomainModel
 {
@@ -6,6 +7,8 @@ namespace LTF.Models.DomainModel
     {
         [Key]
         public int Id { get; set; }
+
+        [JsonIgnore]
         public int DelFlag { get; set; }
     }
 

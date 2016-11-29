@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace LTF.Models.DomainModel
 {
 
     public class MenuGroup : BaseEntity
     {
+
         public ICollection<MenuItem> NavMenuItemCollection { get; set; }
 
         public string Name { get; set; }
