@@ -86,22 +86,27 @@ namespace LTF.Controllers
         }
 
         /// <summary>
-        /// 删除 
+        /// 删除，删除多项时以逗号分隔
         /// </summary>
-        [HttpDelete("del/{roleId}")]
-        public Ret Delete(int roleId)
+        [HttpDelete("del/{roleIdStr}")]
+        public Ret Delete(string roleIdStr)
         {
-            var roleInfo = roleLogic.GetFirst(p => p.Id == roleId && p.DelFlag == (int)DelFlagEnum.Normal);
-            if (roleInfo == null)
+            var idArr = roleIdStr.Split(',');
+            foreach (var id in idArr)
             {
-                return new Ret() { ReCode = ReCodeEnum.Fail, Msg = "删除失败，角色不存在" };
+                var roleId = Convert.ToInt32(id);
+                var roleInfo = roleLogic.GetFirst(p => p.Id == roleId && p.DelFlag == (int)DelFlagEnum.Normal);
+                if (roleInfo == null)
+                {
+                    return new Ret() { ReCode = ReCodeEnum.Fail, Msg = "删除失败，角色不存在" };
+                }
+                roleLogic.DeleteByLogic(roleId);
             }
 
-            roleLogic.DeleteByLogic(roleId);
             roleLogic.SaveChanges();
-
             return new Ret() { ReCode = ReCodeEnum.Success, Msg = "删除成功" };
         }
+
 
     }
 }
