@@ -1,18 +1,10 @@
-
-
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Microsoft.EntityFrameworkCore;
 
-namespace FoundationFramework.Models.DomainModel
+namespace LTF.Models.DomainModel
 {
-    public partial class UserInfo : BaseEntity
+    public partial class User : BaseEntity
     {
-        public int NavDeptId { get; set; }
-        public Department NavDept { get; set; }
-
-        public ICollection<Log> NavLog { get; set; }
-
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Please input Password")]
@@ -21,6 +13,13 @@ namespace FoundationFramework.Models.DomainModel
         [Required(ErrorMessage = "Please input JobNumber")]
         public string JobNumber { get; set; }
 
+        public int NavDeptId { get; set; }
+
+        public Department NavDept { get; set; }
+
+        public ICollection<Log> NavLogCollection { get; set; }
+
+        public ICollection<UserRoleMap> NavUserRoleMapCollection { get; set; }
 
     }
 }

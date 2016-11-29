@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace FoundationFramework.Models.ViewModel
+namespace LTF.Models.ViewModel
 {
     public class PageData<T>
     {

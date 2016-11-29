@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace FoundationFramework.Interfaces
+namespace LTF.Interfaces
 {
     /// <summary>
     /// 定义基本的CRUD接口

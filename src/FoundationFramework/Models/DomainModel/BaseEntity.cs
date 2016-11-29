@@ -1,8 +1,6 @@
-﻿
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace FoundationFramework.Models.DomainModel
+namespace LTF.Models.DomainModel
 {
     public class BaseEntity
     {

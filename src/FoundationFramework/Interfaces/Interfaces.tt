@@ -6,9 +6,9 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".cs" #>
 
-using FoundationFramework.Models.DomainModel;
+using LTF.Models.DomainModel;
 
-namespace FoundationFramework.Interfaces
+namespace LTF.Interfaces
 {
 	/// <summary>
 	/// 使用模板自动生成
@@ -16,7 +16,7 @@ namespace FoundationFramework.Interfaces
     /// </summary>
 <# 
 // 实体类所在绝对路径
-string eneityPath=@"F:\ff-new\FoundationFramework\src\FoundationFramework\Models\DomainModel";
+string eneityPath=@"F:\ff-new\SPA\SPA-WebAPI\src\FoundationFramework\Models\DomainModel"; 
 // 不需要生成的实体数组
 string [] exceptEntityName={"BaseEntity","AccessToken"};
 // 获取实体路径下的所有文件名 

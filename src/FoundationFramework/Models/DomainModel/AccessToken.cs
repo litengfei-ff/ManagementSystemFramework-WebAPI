@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.IdentityModel.Tokens;
 
-namespace FoundationFramework.Models.DomainModel
+namespace LTF.Models.DomainModel
 {
     public class Token
     {

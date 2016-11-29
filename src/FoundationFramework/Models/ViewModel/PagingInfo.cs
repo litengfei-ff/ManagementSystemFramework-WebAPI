@@ -1,7 +1,7 @@
 ﻿
 using System;
 
-namespace FoundationFramework.Models.ViewModel
+namespace LTF.Models.ViewModel
 {
     public class PagingInfo
     {

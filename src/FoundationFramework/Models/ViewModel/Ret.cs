@@ -1,6 +1,6 @@
-﻿using FoundationFramework.Models.Enums;
+﻿using LTF.Models.Enums;
 
-namespace FoundationFramework.Models.ViewModel
+namespace LTF.Models.ViewModel
 {
     /// <summary>
     /// 返回消息类型

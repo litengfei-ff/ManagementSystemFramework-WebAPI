@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
-using FoundationFramework.Models;
-using FoundationFramework.Models.DomainModel;
-using FoundationFramework.Models.Enums;
+using LTF.Models;
+using LTF.Models.DomainModel;
+using LTF.Models.Enums;
 using Microsoft.EntityFrameworkCore;
 
-namespace FoundationFramework.Implements
+namespace LTF.Implements
 {
     public class BaseLogic<T> where T : BaseEntity
     {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace FoundationFramework.Models.Enums
+﻿namespace LTF.Models.Enums
 {
     /// <summary>
     /// 返回的消息代码枚举

@@ -1,14 +1,10 @@
-﻿using System;
-using FoundationFramework.Interfaces;
-using FoundationFramework.Models.ViewModel;
-using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using FoundationFramework.Models.DomainModel;
-using FoundationFramework.Models.Enums;
+﻿using System.Linq;
+using LTF.Models.Enums;
+using LTF.Models.ViewModel;
 
-namespace FoundationFramework.Implements
+namespace LTF.Implements
 {
-    public partial class UserInfoLogic
+    public partial class UserLogic
     {
         /// <summary>
         /// 获取详细信息

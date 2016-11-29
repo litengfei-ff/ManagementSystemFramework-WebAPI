@@ -1,14 +1,11 @@
 ﻿using System;
 using System.IO;
-using FoundationFramework.Interfaces;
-using FoundationFramework.Models.ViewModel;
+using LTF.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.Extensions.Configuration;
 
-namespace FoundationFramework.Filter
+namespace LTF.Filter
 {
     public class ExceptionFilter : IExceptionFilter
     {

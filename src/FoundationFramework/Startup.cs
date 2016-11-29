@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Text;
-using FoundationFramework.Implements;
-using FoundationFramework.Interfaces;
-using FoundationFramework.Models;
+using LTF.Implements;
+using LTF.Interfaces;
+using LTF.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -13,7 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 
-namespace FoundationFramework
+namespace LTF
 {
     public partial class Startup
     {
@@ -47,9 +47,10 @@ namespace FoundationFramework
                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
                                         ops => ops.UseRowNumberForPaging()));
 
-            services.AddScoped<IUserInfoLogic, UserInfoLogic>();
+            services.AddScoped<IUserLogic, UserLogic>();
             services.AddScoped<IDepartmentLogic, DepartmentLogic>();
             services.AddScoped<ILogLogic, LogLogic>();
+            services.AddScoped<IRoleLogic, RoleLogic>();
 
             services.AddMvc();
 

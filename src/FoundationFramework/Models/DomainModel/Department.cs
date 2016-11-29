@@ -1,12 +1,10 @@
-
 using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace FoundationFramework.Models.DomainModel
+namespace LTF.Models.DomainModel
 {
     public partial class Department : BaseEntity
     {
-        public ICollection<UserInfo> NavUser { get; set; }
+        public ICollection<User> NavUserCollection { get; set; }
 
         public int ParentId { get; set; }
 

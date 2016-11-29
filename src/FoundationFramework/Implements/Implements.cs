@@ -1,13 +1,13 @@
 ﻿
-using FoundationFramework.Interfaces;
-using FoundationFramework.Models;
-using FoundationFramework.Models.DomainModel;
+using LTF.Interfaces;
+using LTF.Models;
+using LTF.Models.DomainModel;
 
-namespace FoundationFramework.Implements
+namespace LTF.Implements
 {
 	/// <summary>
 	/// 使用模板自动生成
-    /// 所有实体 继承基类 实现CRUD接口  
+    /// 所有实体 继承基类 实现CRUD接口   
     /// </summary>
  
 	public partial class DepartmentLogic : BaseLogic<Department>, IDepartmentLogic
@@ -20,8 +20,33 @@ namespace FoundationFramework.Implements
         public LogLogic(ApplicationDbContext ctx) : base(ctx) { }
     }
  
-	public partial class UserInfoLogic : BaseLogic<UserInfo>, IUserInfoLogic
+	public partial class MenuGroupLogic : BaseLogic<MenuGroup>, IMenuGroupLogic
     {
-        public UserInfoLogic(ApplicationDbContext ctx) : base(ctx) { }
+        public MenuGroupLogic(ApplicationDbContext ctx) : base(ctx) { }
+    }
+ 
+	public partial class MenuItemLogic : BaseLogic<MenuItem>, IMenuItemLogic
+    {
+        public MenuItemLogic(ApplicationDbContext ctx) : base(ctx) { }
+    }
+ 
+	public partial class RoleLogic : BaseLogic<Role>, IRoleLogic
+    {
+        public RoleLogic(ApplicationDbContext ctx) : base(ctx) { }
+    }
+ 
+	public partial class RoleMenuMapLogic : BaseLogic<RoleMenuMap>, IRoleMenuMapLogic
+    {
+        public RoleMenuMapLogic(ApplicationDbContext ctx) : base(ctx) { }
+    }
+ 
+	public partial class UserLogic : BaseLogic<User>, IUserLogic
+    {
+        public UserLogic(ApplicationDbContext ctx) : base(ctx) { }
+    }
+ 
+	public partial class UserRoleMapLogic : BaseLogic<UserRoleMap>, IUserRoleMapLogic
+    {
+        public UserRoleMapLogic(ApplicationDbContext ctx) : base(ctx) { }
     }
 }

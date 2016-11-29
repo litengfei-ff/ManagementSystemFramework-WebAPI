@@ -1,17 +1,15 @@
-﻿using FoundationFramework.Interfaces;
-using FoundationFramework.Models.DomainModel;
-using FoundationFramework.Models.Enums;
-using FoundationFramework.Models.ViewModel;
-using Microsoft.AspNetCore.Authorization;
+﻿using LTF.Interfaces;
+using LTF.Models.DomainModel;
+using LTF.Models.Enums;
+using LTF.Models.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
-
-namespace FoundationFramework.Controllers
+namespace LTF.Controllers
 {
     [Route("api/[controller]")]
-    public class UserController : FFController
+    public class UserController : MasterController
     {
-        public UserController(ILogLogic iLogLogic, IUserInfoLogic iuserLogic, IDepartmentLogic ideptLogic) : base(iLogLogic, iuserLogic, ideptLogic)
+        public UserController(ILogLogic iLogLogic, IUserLogic iuserLogic, IDepartmentLogic ideptLogic) : base(iLogLogic, iuserLogic, ideptLogic)
         {
         }
 
@@ -26,9 +24,9 @@ namespace FoundationFramework.Controllers
         }
 
         [HttpGet("{id}")]
-        public Ret<UserInfo> Get(int id)
+        public Ret<User> Get(int id)
         {
-            return new Ret<UserInfo>
+            return new Ret<User>
             {
                 ReCode = ReCodeEnum.Success,
                 Data = userLogic[id],
@@ -36,15 +34,15 @@ namespace FoundationFramework.Controllers
         }
 
         [HttpGet("page/{id}")]
-        public Ret<PageData<UserInfo>> GetPage(int id = 1, int pageSize = 5)
+        public Ret<PageData<User>> GetPage(int id = 1, int pageSize = 5)
         {
             int totalCount;
             var realData = userLogic.GetCurrentPage(pageSize, id, out totalCount, p => p.DelFlag == (int)DelFlagEnum.Normal, p => p.Id);
             var pager = new PagingInfo { CurrentPage = id, ItemsPerPage = pageSize, TotalItems = totalCount };
-            return new Ret<PageData<UserInfo>>
+            return new Ret<PageData<User>>
             {
                 ReCode = ReCodeEnum.Success,
-                Data = new PageData<UserInfo>
+                Data = new PageData<User>
                 {
                     PagingData = realData,
                     PagingInfo = pager
@@ -53,7 +51,7 @@ namespace FoundationFramework.Controllers
         }
 
         [HttpPost]
-        public Ret Post([FromBody]UserInfo u)
+        public Ret Post([FromBody]User u)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +63,7 @@ namespace FoundationFramework.Controllers
         }
 
         [HttpPut]
-        public Ret Put([FromBody]UserInfo u)
+        public Ret Put([FromBody]User u)
         {
             if (ModelState.IsValid)
             {

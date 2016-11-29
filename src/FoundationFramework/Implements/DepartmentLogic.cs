@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using FoundationFramework.Models.DomainModel;
-using FoundationFramework.Models.Enums;
-using Newtonsoft.Json.Linq;
+using LTF.Models.Enums;
+using LTF.Models.ViewModel;
 using Newtonsoft.Json;
 
-namespace FoundationFramework.Implements
+namespace LTF.Implements
 {
     public partial class DepartmentLogic
     {
@@ -49,16 +46,5 @@ namespace FoundationFramework.Implements
         }
     }
 
-    public class Dept
-    {
-        public int Id { get; set; }
-
-        public int ParentId { get; set; }
-
-        public int Level { get; set; }
-
-        public string DepartmentName { get; set; }
-
-        public List<Dept> Child { get; set; }
-    }
+   
 }

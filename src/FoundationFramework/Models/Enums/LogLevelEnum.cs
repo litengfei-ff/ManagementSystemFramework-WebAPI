@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace FoundationFramework.Models.Enums
+﻿namespace LTF.Models.Enums
 {
     public enum LogLevelEnum
     {

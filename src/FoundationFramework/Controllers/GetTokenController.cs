@@ -2,28 +2,26 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using FoundationFramework.Interfaces;
-using FoundationFramework.Models.DomainModel;
-using FoundationFramework.Models.ViewModel;
+using LTF.Interfaces;
+using LTF.Models.DomainModel;
+using LTF.Models.ViewModel;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
- 
 
-namespace FoundationFramework.Controllers
+namespace LTF.Controllers
 {
     [Route("api/[controller]")]
-    public class GetTokenController : FFController
+    public class GetTokenController : MasterController
     {
 
-        public GetTokenController(ILogLogic iLogLogic, IUserInfoLogic iuserLogic, IDepartmentLogic ideptLogic) : base(iLogLogic, iuserLogic, ideptLogic)
+        public GetTokenController(ILogLogic iLogLogic, IUserLogic iuserLogic, IDepartmentLogic ideptLogic) : base(iLogLogic, iuserLogic, ideptLogic)
         {
         }
 
         [AllowAnonymous]
         [HttpPut]
-        public dynamic Get([FromBody]UserInfo userInfo)
+        public dynamic Get([FromBody]User userInfo)
         {
             if (!ModelState.IsValid ||
                 !userLogic.IsExists(userInfo.JobNumber, userInfo.Pwd))

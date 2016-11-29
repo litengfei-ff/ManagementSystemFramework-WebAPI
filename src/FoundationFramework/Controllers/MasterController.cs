@@ -1,24 +1,23 @@
 ﻿using System;
 using System.IO;
-using FoundationFramework.Filter;
-using FoundationFramework.Interfaces;
+using LTF.Filter;
+using LTF.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
-
-namespace FoundationFramework.Controllers
+namespace LTF.Controllers
 {
     /// <summary>
     /// 控制器基类  提供访问配置文件，写日志，根据Token获取用户信息等方法 好使吗
     /// </summary>
     [Authorize]
     [TypeFilter(typeof(ExceptionFilter))]
-    public class FFController : Controller
+    public class MasterController : Controller
     {
         protected IConfigurationRoot Configuration;
         protected ILogLogic logLogic { get; }
-        protected IUserInfoLogic userLogic { get; }
+        protected IUserLogic userLogic { get; }
         protected IDepartmentLogic deptLogic { get; }
         protected string userJobNumber => GetJobNumberFromToken();
         protected int userId => userLogic.GetUserIdByJobNumber(userJobNumber) ?? Convert.ToInt32(Configuration["Log:AnonymousUserId"]);
@@ -29,7 +28,7 @@ namespace FoundationFramework.Controllers
         /// <param name="iLogLogic"></param>
         /// <param name="iuserLogic"></param>
         /// <param name="ideptLogic"></param>
-        public FFController(ILogLogic iLogLogic, IUserInfoLogic iuserLogic, IDepartmentLogic ideptLogic)
+        public MasterController(ILogLogic iLogLogic, IUserLogic iuserLogic, IDepartmentLogic ideptLogic)
         {
             logLogic = iLogLogic;
             userLogic = iuserLogic;

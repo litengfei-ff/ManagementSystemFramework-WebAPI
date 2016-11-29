@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace FoundationFramework.Interfaces
+namespace LTF.Interfaces
 {
     partial interface ILogLogic
     {

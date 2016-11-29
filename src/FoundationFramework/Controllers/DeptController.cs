@@ -1,22 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using FoundationFramework.Interfaces;
-using FoundationFramework.Models.DomainModel;
-using FoundationFramework.Models.Enums;
-using FoundationFramework.Models.ViewModel;
+﻿using LTF.Interfaces;
+using LTF.Models.DomainModel;
+using LTF.Models.Enums;
+using LTF.Models.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace FoundationFramework.Controllers
+namespace LTF.Controllers
 {
     [Route("api/[controller]")]
-    public class DeptController : FFController
+    public class DeptController : MasterController
     {
 
-        public DeptController(ILogLogic iLogLogic, IUserInfoLogic iuserLogic, IDepartmentLogic ideptLogic) : base(iLogLogic, iuserLogic, ideptLogic)
+        public DeptController(ILogLogic iLogLogic, IUserLogic iuserLogic, IDepartmentLogic ideptLogic) : base(iLogLogic, iuserLogic, ideptLogic)
         {
         }
 
