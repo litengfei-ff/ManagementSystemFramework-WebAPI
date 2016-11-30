@@ -1,5 +1,5 @@
 using System;
-using Newtonsoft.Json;
+using LTF.Models.Enums;
 
 namespace LTF.Models.DomainModel
 {
@@ -10,7 +10,7 @@ namespace LTF.Models.DomainModel
 
         public User NavUser { get; set; }
 
-        public string LogLevel { get; set; }
+        public LogLevelEnum LogLevel { get; set; }
 
         public string RequestUrl { get; set; }
 

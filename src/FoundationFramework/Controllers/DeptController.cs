@@ -23,7 +23,7 @@ namespace LTF.Controllers
         /// 获取部门列表
         /// </summary>
         /// <returns></returns>
-        [HttpGet("get")]
+        [HttpGet]
         public Ret<string> Get()
         {
             return new Ret<string>

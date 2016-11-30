@@ -30,7 +30,7 @@ namespace LTF.Filter
                 context.Result = new BadRequestResult();
 
                 logLogic.Error(context.Exception, null, requestUrl);
-                
+
                 context.ExceptionHandled = true;
             }
         }

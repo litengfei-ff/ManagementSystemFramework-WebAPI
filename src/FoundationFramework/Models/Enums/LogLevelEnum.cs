@@ -3,24 +3,24 @@
     public enum LogLevelEnum
     {
         /// <summary>
-        /// 致命的
+        /// 调试信息
         /// </summary>
-        Fatal,
-        /// <summary>
-        /// 程序出现错误
-        /// </summary>
-        Error,
-        /// <summary>
-        /// 警告
-        /// </summary>
-        Warn,
+        Debug = 1,
         /// <summary>
         /// 消息
         /// </summary>
         Information,
         /// <summary>
-        /// 调试信息
+        /// 警告
         /// </summary>
-        Debug
+        Warn,
+        /// <summary>
+        /// 程序出现异常错误
+        /// </summary>
+        Error,
+        /// <summary>
+        /// 致命的
+        /// </summary>
+        Fatal
     }
 }

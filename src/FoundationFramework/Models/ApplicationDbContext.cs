@@ -61,34 +61,34 @@ namespace LTF.Models
             var deptLogic = serviceProvider.GetRequiredService<IDepartmentLogic>();
             var roleLogic = serviceProvider.GetRequiredService<IRoleLogic>();
 
-            Department dept = null;
-            Role role = null;
-            if (deptLogic.GetFirst(p => true) == null)
-            {
-                dept = deptLogic.Add(new Department
-                {
-                    DepartmentName = "公司",
-                    Level = 1,
-                    ParentId = 0
-                });
-            }
-            if (roleLogic.GetFirst(p => true) == null)
-            {
-                role = roleLogic.Add(new Role { Name = "管理员" });
-            }
-            if (userLogic.GetFirst(p => true) == null)
-            {
-                userLogic.Add(new User
-                {
-                    JobNumber = "08001",
-                    Name = "农夫山泉",
-                    Pwd = "08001123",
-                    NavDept = dept,
-                    NavUserRoleMapCollection = new List<UserRoleMap> { new UserRoleMap { NavRole = role } }
-                });
-            }
+            //Department dept = null;
+            //Role role = null;
+            //if (deptLogic.GetFirst(p => true) == null)
+            //{
+            //    dept = deptLogic.Add(new Department
+            //    {
+            //        DepartmentName = "公司",
+            //        Level = 1,
+            //        ParentId = 0
+            //    });
+            //}
+            //if (roleLogic.GetFirst(p => true) == null)
+            //{
+            //    role = roleLogic.Add(new Role { Name = "管理员" });
+            //}
+            //if (userLogic.GetFirst(p => true) == null)
+            //{
+            //    userLogic.Add(new User
+            //    {
+            //        JobNumber = "08001",
+            //        Name = "农夫山泉",
+            //        Pwd = "08001123",
+            //        NavDept = dept,
+            //        NavUserRoleMapCollection = new List<UserRoleMap> { new UserRoleMap { NavRole = role } }
+            //    });
+            //}
 
-            deptLogic.SaveChanges();
+            //deptLogic.SaveChanges();
 
         }
     }

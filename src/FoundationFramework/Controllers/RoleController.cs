@@ -23,7 +23,7 @@ namespace LTF.Controllers
         /// 获取角色列表
         /// </summary>
         /// <returns></returns>
-        [HttpGet("get")]
+        [HttpGet]
         public Ret<List<Role>> Get()
         {
             return new Ret<List<Role>>
