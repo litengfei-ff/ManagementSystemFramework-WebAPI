@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Text;
 using LTF.Implements;
 using LTF.Interfaces;
@@ -11,7 +12,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.PlatformAbstractions;
 using Microsoft.IdentityModel.Tokens;
+using Swashbuckle.Swagger.Model;
 
 namespace LTF
 {
@@ -54,6 +57,24 @@ namespace LTF
 
             services.AddMvc();
 
+            services.AddSwaggerGen(options =>
+            {
+                options.SingleApiVersion(new Info
+                {
+                    Version = "v1",
+                    Title = "API接口文档",
+                    Description = "XXX系统接口文档",
+                    TermsOfService = "None",
+                    Contact = new Contact { Name = "FF", Email = "", Url = "https://github.com/litengfei-ff" },
+                    //License = new License { Name = "Use under LICX", Url = "http://url.com" },
+                });
+                //Determine base path for the application.
+                var basePath = PlatformServices.Default.Application.ApplicationBasePath;
+
+                //Set the comments path for the swagger json and ui.
+                var xmlPath = Path.Combine(basePath, "FoundationFramework.xml");
+                options.IncludeXmlComments(xmlPath);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,6 +90,12 @@ namespace LTF
             ConfigureJwtAuth(app);
 
             app.UseMvcWithDefaultRoute();
+
+            // Enable middleware to serve generated Swagger as a JSON endpoint
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui assets (HTML, JS, CSS etc.)
+            app.UseSwaggerUi();
 
             ApplicationDbContext.SetSeed(app.ApplicationServices, Configuration);
 
