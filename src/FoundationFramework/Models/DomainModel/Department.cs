@@ -6,7 +6,7 @@ namespace LTF.Models.DomainModel
 {
     public partial class Department : BaseEntity
     {
-         
+        [JsonIgnore]
         public ICollection<User> NavUserCollection { get; set; }
 
         public int ParentId { get; set; }
